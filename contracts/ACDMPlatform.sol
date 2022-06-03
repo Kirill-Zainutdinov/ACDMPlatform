@@ -1,11 +1,9 @@
 //SPDX-License-Identifier: Unlicense
-pragma solidity ^0.8.0;
+pragma solidity 0.8.0;
 
-import "@openzeppelin/contracts/access/AccessControl.sol";
 import "./IMyERC20.sol";
 
-
-contract ACDMPlatform is AccessControl{
+contract ACDMPlatform {
 
     // владелец контракта
     address owner;
@@ -67,12 +65,6 @@ contract ACDMPlatform is AccessControl{
     mapping(address => uint256) referalRewards;
     // словарь с количеством эфира от продажи токенов
     mapping(address => uint256) tradeEths;
-
-    // роли
-    //bytes32 public constant tokenOwner = keccak256("owner");
-    //bytes32 public constant administrator = keccak256("administrator");
-    // словарь с ролями
-    //mapping(bytes32 => RoleData) public _roles;
 
     modifier onlyDao(){
         require(msg.sender == daoAddress, "You are not DAO");
